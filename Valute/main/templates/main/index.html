@@ -1,0 +1,17 @@
+{% extends 'main/content.html' %}
+
+{% block content %}
+<h1> Курс валют </h1>
+
+<div class="demo">
+    {% for el in data %}
+        <input class="hide" id={{el.value}} type="checkbox">
+        <label for={{el.value}}> {{ el.name }} </label>
+        <div>
+            {{ el.value }}
+        </div>
+        <br/>
+        <br/>
+    {% endfor %}
+</div>
+{% endblock %}
