@@ -6,7 +6,8 @@
 <div class="demo">
     {% for el in data %}
         <input class="hide" id={{el.value}} type="checkbox">
-        <label for={{el.value}}> {{ el.name }} </label>
+        <input id="rub" for={{el.value}} type="text">
+        <input id="valute" for={{el.value}} type="text">
         <div>
             {{ el.value }}
         </div>
@@ -14,4 +15,10 @@
         <br/>
     {% endfor %}
 </div>
+<script>
+    var input = document.getElementById('rub');
+    input.oninput = function() {
+    document.getElementById('valute').innerHTML = input.value;
+  };
+</script>
 {% endblock %}
