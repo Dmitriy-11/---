@@ -16,7 +16,7 @@ def getRes():
         list_valute = content.findall("./Valute")
         for valute in list_valute:
             name = valute.find("./Name").text
-            value = valute.find("./Value").text
+            value = float(valute.find("./Value").text.replace(',', '.'))
             lst_result.append({"name": name, "value": value})
     return lst_result
 

@@ -3,22 +3,30 @@
 {% block content %}
 <h1> Курс валют </h1>
 
+<script>
+    function convertInRub(object, val){
+        object.parentNode.valute.value = object.parentNode.rub.value * val;
+    }
+    function convertFromRub(object, val) {
+        object.parentNode.rub.value = object.parentNode.valute.value / val;
+    }
+</script>
+
 <div class="demo">
     {% for el in data %}
-        <input class="hide" id={{el.value}} type="checkbox">
-        <input id="rub" for={{el.value}} type="text">
-        <input id="valute" for={{el.value}} type="text">
+        <input class="hide" id={{forloop.counter}} type="checkbox">
+        <label for={{forloop.counter}}> {{el.name}} </label>
         <div>
-            {{ el.value }}
+            <form id = "f1" >
+                <input class = "form__field" id="rub" type="number" value="1" onclick="this.select();"
+                                                                              onkeyup="convertInRub(this, {{el.value}})">
+                <input class = "form__field" id="valute" type="number" value={{el.value}} onclick="this.select();"
+                                                                                          onkeyup="convertFromRub(this,  {{el.value}})">
+            </form>
         </div>
         <br/>
         <br/>
     {% endfor %}
 </div>
-<script>
-    var input = document.getElementById('rub');
-    input.oninput = function() {
-    document.getElementById('valute').innerHTML = input.value;
-  };
-</script>
+
 {% endblock %}
