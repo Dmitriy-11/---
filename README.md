@@ -1,3 +1,3 @@
 ## Интерфейс приложения
-![Интерфейс приложения](images/interface.png/)
+![Интерфейс приложения](static/images/interface.png/)
 
